@@ -1,3 +1,3 @@
-streamlit==1.38.0
-python-docx==0.8.11
-git+https://github.com/google/generative-ai-python.git
+streamlit==1.25.0  # Adjust the version based on your Streamlit version
+openai==0.27.0  # Ensure it's compatible with your OpenAI usage
+python-docx==0.8.11  # For handling .docx files
