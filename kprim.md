@@ -46,8 +46,8 @@ Example:
 - No additional explanation. ONLY the questions as plain text. never use ':' as a separator.
 
 //rules
-- rules KPRIM ALWAYS 4 possible Answers, 0 to 4 correct: Typ\tKPRIM\nKeywords\tSeite {page_number}\nCoverage\tLehrmittel Aspekte der Allgemeinbildung\nSubject\t/Allgemeinbildung/{subject}\nLevel\t{bloom_level}\nTitle\tgeneral_title_of_the_question\nQuestion\tgeneral_question_text_placeholder\nPoints\t5\n+\tcorrect_answer_placeholder_1\n-\tincorrect_answer_placeholder_2\n-1\tincorrect_answer_placeholder_1\n{points_according_to_number_correct_answers}\tcorrect_answer_placeholder_1
-
+- rules KPRIM ALWAYS 4 possible Answers, 0 to 4 correct.
+  
 //templates_closed.txt
 Typ	KPRIM
 Keywords	Seite {page_number}
