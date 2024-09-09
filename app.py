@@ -30,7 +30,7 @@ def download_text_file(content, filename):
 
 def generate_gpt4_response(prompt):
     response = openai.ChatCompletion.create(
-        model="gpt-4",  # Ensure you're using the correct model
+        model="gpt-4o",  # Ensure you're using the correct model
         messages=[
             {"role": "system", "content": prompt},
         ],
