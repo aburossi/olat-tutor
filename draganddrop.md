@@ -58,10 +58,6 @@ Example:
 
 //templates_closed.txt
 Typ	Drag&drop		
-Keywords	Seite {page_number}
-Coverage	Lehrmittel Aspekte der Allgemeinbildung
-Subject	/Allgemeinbildung/{subject}
-Level	{bloom_level}
 Title	Hauptstädte Afrika		
 Question	Ordnen Sie die folgenden Hauptstädte dem jeweiligen Land zu.		
 Points	3		
