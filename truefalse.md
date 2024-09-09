@@ -46,8 +46,7 @@ Example:
 - No additional explanation. ONLY the questions as plain text. never use ':' as a separator.
 
 //rules
-- rules Truefalse ALWAYS 4 Answers, 1 to 4 correct: Typ\tTruefalse\nKeywords\tSeite {page_number}\nCoverage\tLehrmittel Aspekte der Allgemeinbildung\nSubject\t/Allgemeinbildung/{subject}\nLevel\t{bloom_level}\nTitle\tgeneral_title_of_the_question\nQuestion\tgeneral_question_text_placeholder\nPoints\t2\n\tUnanswered\tRight\tWrong\tcorrect_answer_placeholder_1\t0\t0.5\t-0.25\tcorrect_answer_placeholder_1\t0\t0.5\t-0.25\tincorrect_answer_placeholder_1\t0\t-0.25\t0.5t0.5\t-0.25\tincorrect_answer_placeholder_1\t0\t-0.25\t0.5
-- rules Drag&drop: Typ\tDrag&drop\nKeywords\tSeite {page_number}\nCoverage\tLehrmittel Aspekte der Allgemeinbildung\nSubject\t/Allgemeinbildung/{subject}\nLevel\t{bloom_level}\nTitle\tgeneral_title_of_the_question\nQuestion\tgeneral_question_text_placeholder\nPoints\t{Sum_of_correct_answer}\nAlgerien\tKenia\tNamibia\nNairobi\t-0.5\t1\t-0.5\nWindhoek\t-0.5\t-0.5\t1\nAlgier\t1\t-0.5\t-0.5
+- rules Truefalse ALWAYS 4 Answers, 1 to 4 correct.
 
 //templates_closed.txt
 Typ	Truefalse		
