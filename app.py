@@ -1,73 +1,44 @@
-import os
 import streamlit as st
-from openai import OpenAI
-import re
-from io import StringIO
-
-# Streamlit setup
-st.title("GPT-4 Message Processor")
+import openai
+import os
 
 # Access API key from Streamlit secrets
 OPENAI_API_KEY = st.secrets["openai"]["api_key"]
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-def get_system_prompt(code_directory):
-    """Returns the system prompt from system_prompt.md if it exists, otherwise returns a default prompt."""
-    system_prompt_path = os.path.join(code_directory, 'system_prompt.md')
-    if os.path.exists(system_prompt_path):
-        with open(system_prompt_path, 'r', encoding='utf-8') as f:
-            return f.read().strip()
-    else:
-        return "You are a helpful assistant."
+def read_prompt_from_md():
+    with open("message_1_SC.md", "r") as file:
+        return file.read()
 
-def download_text_file(content, filename):
-    """Allows users to download the response as a txt file in Streamlit."""
-    buffer = StringIO()
-    buffer.write(content)
-    buffer.seek(0)
-    st.download_button(label=f"Download {filename}", data=buffer, file_name=filename, mime="text/plain")
-
-def generate_gpt4_response(prompt):
-    response = client.chat.completions.create(
-        model="gpt-4o",  # Make sure this is the correct model name
+def get_chatgpt_response(prompt):
+    response = openai.ChatCompletion.create(
+        model="gpt-4o",
         messages=[
-            {"role": "system", "content": prompt},
-        ],
-        max_tokens=4000,
-        temperature=0.5,
-        top_p=0.95,
-        n=1,
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ]
     )
     return response.choices[0].message.content
 
+st.title("ChatGPT Prompt Generator")
 
+user_input = st.text_area("Enter your text:")
 
-
-def main():
-    # Get the directory of the script
-    code_directory = os.path.dirname(os.path.abspath(__file__))
-
-    # Get system prompt
-    system_prompt = get_system_prompt(code_directory)
-    
-    st.write(f"Using system prompt: {system_prompt[:50]}...")
-
-    # User inputs plain text into a text area
-    user_input = st.text_area("Paste your plain text here:")
-
+if st.button("Generate Response"):
     if user_input:
-        st.write(f"Processing input...")
-
-        # Send the input and system prompt to GPT-4
-        initial_message = f"{system_prompt}\n\n{user_input}"
-        initial_response = generate_gpt4_response(initial_message)
-
-        # Display the response in the app
-        st.write(f"GPT-4 Response: {initial_response}")
-
-        # Save and offer the initial response as a downloadable file
-        output_filename = "response.txt"
-        download_text_file(initial_response, output_filename)
-
-if __name__ == "__main__":
-    main()
+        prompt_template = read_prompt_from_md()
+        full_prompt = f"{prompt_template}\n\nUser Input: {user_input}"
+        
+        response = get_chatgpt_response(full_prompt)
+        
+        st.subheader("Generated Response:")
+        st.write(response)
+        
+        st.download_button(
+            label="Download Response",
+            data=response,
+            file_name="response.txt",
+            mime="text/plain"
+        )
+    else:
+        st.warning("Please enter some text.")
