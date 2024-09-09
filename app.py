@@ -1,16 +1,15 @@
 import os
 import streamlit as st
-import openai  # Use OpenAI instead of google.generativeai
+from openai import OpenAI
 import re
 from io import StringIO
-
 
 # Streamlit setup
 st.title("GPT-4 Message Processor")
 
 # Access API key from Streamlit secrets
 OPENAI_API_KEY = st.secrets["openai"]["api_key"]
-openai.api_key = OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 def get_system_prompt(code_directory):
     """Returns the system prompt from system_prompt.md if it exists, otherwise returns a default prompt."""
@@ -29,7 +28,7 @@ def download_text_file(content, filename):
     st.download_button(label=f"Download {filename}", data=buffer, file_name=filename, mime="text/plain")
 
 def generate_gpt4_response(prompt):
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4o",  # Make sure this is the correct model name
         messages=[
             {"role": "system", "content": prompt},
@@ -40,6 +39,7 @@ def generate_gpt4_response(prompt):
         n=1,
     )
     return response.choices[0].message.content
+
 
 
 
