@@ -33,7 +33,7 @@ def generate_gpt4_response(prompt):
         messages=[
             {"role": "system", "content": prompt},
         ],
-        max_tokens=8192,
+        max_tokens=4000,
         temperature=0.5,
         top_p=0.95,
         n=1,
