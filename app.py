@@ -2,16 +2,15 @@ import streamlit as st
 from openai import OpenAI
 import os
 
-# Access API key from Streamlit secrets
-OPENAI_API_KEY = st.secrets["openai"]["api_key"]
-client = OpenAI(api_key=OPENAI_API_KEY)
+# Set up OpenAI client
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def read_prompt_from_md():
     with open("message_1_SC.md", "r") as file:
         return file.read()
 
 def get_chatgpt_response(prompt):
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
@@ -29,16 +28,19 @@ if st.button("Generate Response"):
         prompt_template = read_prompt_from_md()
         full_prompt = f"{prompt_template}\n\nUser Input: {user_input}"
         
-        response = get_chatgpt_response(full_prompt)
-        
-        st.subheader("Generated Response:")
-        st.write(response)
-        
-        st.download_button(
-            label="Download Response",
-            data=response,
-            file_name="response.txt",
-            mime="text/plain"
-        )
+        try:
+            response = get_chatgpt_response(full_prompt)
+            
+            st.subheader("Generated Response:")
+            st.write(response)
+            
+            st.download_button(
+                label="Download Response",
+                data=response,
+                file_name="response.txt",
+                mime="text/plain"
+            )
+        except Exception as e:
+            st.error(f"An error occurred: {str(e)}")
     else:
         st.warning("Please enter some text.")
