@@ -37,40 +37,30 @@ Example:
 
 //output
 - OUTPUT should only include the generated questions
-- ALWAYS generate 5 questions
+- ALWAYS generate 3 questions
 - READ the //rules to understand the rules for points and answers.
 - STRICTLY follow the formatting of the 'templates_closed.txt'.
 - IMPORTANT: the output is just the questions
 - No additional explanation. ONLY the questions as plain text. never use ':' as a separator.
 
 //rules
-- rules Truefalse ALWAYS 4 Answers, 1 to 4 correct.
+- rules Truefalse ALWAYS 3 Answers
 
 //templates_closed.txt
 Typ	Truefalse		
-Keywords	Seite {page_number}
-Coverage	Lehrmittel Aspekte der Allgemeinbildung
-Subject	/Allgemeinbildung/{subject}
-Level	{bloom_level}
 Title	Hauptstädte Europa		
 Question	Sind die folgenden Aussagen richtig oder falsch?		
-Points	2		
+Points	3		
 	Unanswered	Right	Wrong
-Paris ist in Frankreich	0	0.5	-0.25
-Bern ist in Schweiz	0	0.5	-0.25
-Stockholm ist in Danemark	0	-0.25	0.5
-Stockholm ist in Schweden	0	0.5	-0.25
+Paris ist in Frankreich	0	1	-0.5
+Bern ist in Schweiz	0	1	-0.5
+Stockholm ist in Danemark	0	-0.5	1
 
 Typ    Truefalse
-Keywords    Seite {page_number}
-Coverage    Lehrmittel Aspekte der Allgemeinbildung
-Subject    /Allgemeinbildung/{subject}
-Level    {bloom_level}
 Title    Kontinente
 Question    Sind die folgenden Aussagen richtig oder falsch?
-Points    2
+Points    3
     Unanswered    Right    Wrong
-Hongkong ist in Europa    0    -0.25    0.5
-Los Angeles ist in Nordamerika    0    0.5    -0.25
-Buenos Aires ist in Afrika    0    -0.25    0.5
-Berlin ist in Asien    0    -0.25    0.5
+Hongkong ist in Europa    0    -0.5    1
+Buenos Aires ist in Afrika    0    -0.5    1
+Berlin ist in Asien    0    -0.5    1

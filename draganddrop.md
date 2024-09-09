@@ -12,6 +12,7 @@
 - refer to 'bloom_levels_closed' for types of question to formulate according to the content of the image or text
 - refer to the 'templates_closed.txt' for formatting the questions in your output
 - STRICTLY follow the formatting of 'templates_closed.txt'
+- in //templates_closed.txt all tabulators matter and new lines matter
 - IMPORTANT: Drag&Drop Questions ALWAYS have 3 Points. 
 - IMPORTANT: the points for correct answers are equals 3 divided by the number of correct answers
 -- 2 correct answers means 1.5 Points for each correct answer,
@@ -47,7 +48,7 @@ Example:
 
 //output
 - OUTPUT should only include the generated questions
-- ALWAYS generate 10 questions
+- ALWAYS generate 3 questions
 - READ the //rules to understand the rules for points and answers.
 - STRICTLY follow the formatting of the 'templates_closed.txt'.
 - IMPORTANT: the output is just the questions
