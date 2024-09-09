@@ -29,9 +29,8 @@ def download_text_file(content, filename):
     st.download_button(label=f"Download {filename}", data=buffer, file_name=filename, mime="text/plain")
 
 def generate_gpt4_response(prompt):
-    """Generates a response using GPT-4."""
     response = openai.ChatCompletion.create(
-        model="gpt-4o",
+        model="gpt-4",  # Ensure you're using the correct model
         messages=[
             {"role": "system", "content": prompt},
         ],
@@ -41,6 +40,7 @@ def generate_gpt4_response(prompt):
         n=1,
     )
     return response['choices'][0]['message']['content']
+
 
 def main():
     # Get the directory of the script
