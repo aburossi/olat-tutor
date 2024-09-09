@@ -54,7 +54,7 @@ Example:
 - No additional explanation. ONLY the questions as plain text. never use ':' as a separator.
 
 //rules
-- rules Drag&drop may have 2-4 drop categories and 2 to 10 drag categories: Typ\tDrag&drop\nKeywords\tSeite {page_number}\nCoverage\tLehrmittel Aspekte der Allgemeinbildung\nSubject\t/Allgemeinbildung/{subject}\nLevel\t{bloom_level}\nTitle\tgeneral_title_of_the_question\nQuestion\tgeneral_question_text_placeholder\nPoints\t3\n\tdrop_category1\tdrop_category2\tdrop_category3\ndrag_word_categoory2\t-0.5\t1\t-0.5\ndragword_category3\t-0.5\t-0.5\t1\nDragword_category1\t1\t-0.5\t-0.5
+- rules Drag&drop may have 2-4 drop categories and 2 to 10 drag categories
 
 //templates_closed.txt
 Typ	Drag&drop		
