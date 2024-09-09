@@ -2,8 +2,9 @@ import streamlit as st
 from openai import OpenAI
 import os
 
-# Set up OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Access API key from Streamlit secrets
+OPENAI_API_KEY = st.secrets["openai"]["api_key"]
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 def read_prompt_from_md():
     with open("message_1_SC.md", "r") as file:
