@@ -36,9 +36,48 @@ def get_chatgpt_response(prompt):
     return response.choices[0].message.content
 
 def clean_json_string(s):
+    # Remove any leading/trailing whitespace
     s = s.strip()
-    s = s.lstrip('```json').rstrip('```')
+    
+    # Remove any markdown code block indicators
+    s = re.sub(r'^```json\s*', '', s)
+    s = re.sub(r'\s*```$', '', s)
+    
+    # Attempt to find JSON-like content within the string
+    match = re.search(r'\[.*\]', s, re.DOTALL)
+    if match:
+        return match.group(0)
+    
     return s
+
+def transform_output(json_string):
+    try:
+        cleaned_json_string = clean_json_string(json_string)
+        json_data = json.loads(cleaned_json_string)
+        fib_output, ic_output = convert_json_to_text_format(json_data)
+        return f"{ic_output}\n---\n{fib_output}"
+    except json.JSONDecodeError as e:
+        st.error(f"Error parsing JSON: {e}")
+        st.text("Cleaned input:")
+        st.code(cleaned_json_string, language='json')
+        st.text("Original input:")
+        st.code(json_string)
+        
+        # Attempt to salvage partial JSON
+        try:
+            partial_json = json.loads(cleaned_json_string + ']')
+            st.warning("Attempted to salvage partial JSON. Results may be incomplete.")
+            fib_output, ic_output = convert_json_to_text_format(partial_json)
+            return f"{ic_output}\n---\n{fib_output}"
+        except:
+            st.error("Unable to salvage partial JSON.")
+            return "Error: Invalid JSON format"
+    except Exception as e:
+        st.error(f"Error processing input: {e}")
+        st.text("Original input:")
+        st.code(json_string)
+        return "Error: Unable to process input"
+
 
 def convert_json_to_text_format(json_input):
     if isinstance(json_input, str):
