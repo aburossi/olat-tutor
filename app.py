@@ -194,7 +194,7 @@ if st.button("Generiere Fragen"):
 
 
 # File uploader
-uploaded_file = st.file_uploader("Upload a PDF or DOCX file", type=["pdf", "docx"])
+    uploaded_file = st.file_uploader("Upload a PDF or DOCX file", type=["pdf", "docx"])
 
 text_content = ""
 if uploaded_file is not None:
