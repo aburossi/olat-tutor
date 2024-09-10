@@ -39,7 +39,7 @@ Example:
 - OUTPUT should only include the 3 generated questions
 - ALWAYS generate 3 questions
 - READ the //rules to understand the rules for points and answers.
-- STRICTLY follow the formatting of the 'templates_closed.txt'.
+- STRICTLY follow the formatting of the 'templates_closed.txt' using tabulator as in 'Output Example'
 - IMPORTANT: the output is just the 3 questions
 - No additional explanation. ONLY the questions as plain text. never use ':' as a separator.
 

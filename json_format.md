@@ -74,6 +74,7 @@ Blanks should require students to demonstrate understanding by selecting words t
 ]
 
 single question Example Output :
+```json
 [
   {
     "text": "Switzerland's direct democracy empowers citizens to participate in decision-making through referendums and initiatives. A referendum allows citizens to challenge laws passed by the parliament, requiring 50,000 signatures within 100 days to trigger a national vote. Conversely, a popular initiative enables citizens to propose constitutional amendments, needing 100,000 signatures within 18 months.",
@@ -87,3 +88,4 @@ single question Example Output :
     ]
   }
 ]
+```

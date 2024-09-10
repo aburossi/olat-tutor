@@ -55,7 +55,7 @@ Example:
 Typ\tMC\nTitle\tgeneral_title_of_the_question\nQuestion\tgeneral_question_text_placeholder\nMax answers\t4\nMin answers\t0\nPoints\tSum_of_correct_answer\n1\tcorrect_answer_placeholder_1\n1\tcorrect_answer_placeholder_1\n1\tcorrect_answer_placeholder_1\n-0.5\tincorrect_answer_placeholder_1
 
 OUTPUT Example:
-'Typ	MC
+Typ	MC
 Title	Fussball: Austragungsort
 Question	In welchen Ländern wurde zwischen dem Jahr 2000 und 2015 eine Fussball Weltmeisterschaft ausgetragen?
 Max answers	4
@@ -64,9 +64,9 @@ Points	3
 1	Deutschland
 1	Brasilien
 1	Südafrika
--1	Schweiz'
+-1	Schweiz
 
-'Typ	MC
+Typ	MC
 Title	Fussball: Austragungsort
 Question	Welches Land hat noch nie eine WM gewonnen?
 Max answers	4
@@ -75,7 +75,7 @@ Points	3
 -1	Deutschland
 -1	Brasilien
 -1	Südafrika
-3	Schweiz'
+3	Schweiz
 
 Typ	MC
 Title	Fussball: WM-Titeln
@@ -99,7 +99,7 @@ Points	3
 1	Südafrika
 -1	Schweiz
 
-'Typ	MC
+Typ	MC
 Title	Fussball: WM-Titeln
 Question	Welche Ländern haben mindestens drei WM gewonnen?
 Max answers	4
