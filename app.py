@@ -23,7 +23,7 @@ def get_chatgpt_response(prompt):
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "system", "content": "You are specialized in generating Q&A in specific formats according to the instructions of the user. The questions are used in a vocational school in switzerland."},
             {"role": "user", "content": prompt}
         ]
     )
