@@ -52,32 +52,10 @@ Example:
     - 4 correct = 0.75 points for each correct answer
       
 //templates_closed.txt
-# template 1 correct answer
-Typ	MC
-Title	Fussball: Austragungsort
-Question	Welches Land hat noch nie eine WM gewonnen?
-Max answers	4
-Min answers	0
-Points	3
--1	Deutschland
--1	Brasilien
--1	Südafrika
-3	Schweiz
+Typ\tMC\nTitle\tgeneral_title_of_the_question\nQuestion\tgeneral_question_text_placeholder\nMax answers\t4\nMin answers\t0\nPoints\tSum_of_correct_answer\n1\tcorrect_answer_placeholder_1\n1\tcorrect_answer_placeholder_1\n1\tcorrect_answer_placeholder_1\n-0.5\tincorrect_answer_placeholder_1
 
-# template 2 correct answers
-Typ	MC
-Title	Fussball: WM-Titeln
-Question	Welche Ländern haben mindestens eine WM gewonnen?
-Max answers	4
-Min answers	0
-Points	3
-1.5	Deutschland
-1.5	Brasilien
--1	Südafrika
--1	Schweiz
-
-# template 3 correct answers
-Typ	MC
+OUTPUT Example:
+'Typ	MC
 Title	Fussball: Austragungsort
 Question	In welchen Ländern wurde zwischen dem Jahr 2000 und 2015 eine Fussball Weltmeisterschaft ausgetragen?
 Max answers	4
@@ -86,10 +64,42 @@ Points	3
 1	Deutschland
 1	Brasilien
 1	Südafrika
--1	Schweiz
+-1	Schweiz'
 
-# template 4 correct answers
-Typ	MC
+'Typ	MC
+Title	Fussball: Austragungsort
+Question	Welches Land hat noch nie eine WM gewonnen?
+Max answers	4
+Min answers	0
+Points	3
+-1	Deutschland
+-1	Brasilien
+-1	Südafrika
+3	Schweiz'
+
+'Typ	MC
+Title	Fussball: WM-Titeln
+Question	Welche Ländern haben mindestens eine WM gewonnen?
+Max answers	4
+Min answers	0
+Points	3
+1.5	Deutschland
+1.5	Brasilien
+-1	Südafrika
+-1	Schweiz'
+
+'Typ	MC
+Title	Fussball: Austragungsort
+Question	In welchen Ländern wurde zwischen dem Jahr 2000 und 2015 eine Fussball Weltmeisterschaft ausgetragen?
+Max answers	4
+Min answers	0
+Points	3
+1	Deutschland
+1	Brasilien
+1	Südafrika
+-1	Schweiz'
+
+'Typ	MC
 Title	Fussball: WM-Titeln
 Question	Welche Ländern haben mindestens drei WM gewonnen?
 Max answers	4
@@ -98,4 +108,4 @@ Points	3
 0.75	Deutschland
 0.75	Brasilien
 0.75	Italien
-0.75	Argentinien
+0.75	Argentinien'

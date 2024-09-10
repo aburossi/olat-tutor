@@ -48,11 +48,14 @@ Example:
 - in //templates_closed.txt all tabulators matter. 
 
 //templates_closed.txt
-Typ	SC
+Typ\tSC\nTitle\tgeneral_title_of_the_question\nQuestion\tgeneral_question_text_placeholder\nPoints\tAnswer Value\n1\tcorrect_answer_placeholder_1\n-0.5\tincorrect_answer_placeholder_1\n-0.5\tincorrect_answer_placeholder_2\n-0.5\tincorrect_answer_placeholder_3
+
+OUTPUT Example:
+'Typ	SC
 Title	Fussball: Gewinner
 Question	Welche Mannschaft gewann 1982 die Fussball Weltmeisterschaft?
 Points	1
 1	Italien
--0.5	Brasilien
--0.5	Südafrika
--0.5	Spanien    
+0	Brasilien
+0	Südafrika
+0	Spanien'   
