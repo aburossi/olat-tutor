@@ -166,6 +166,36 @@ st.title("OLAT Fragen Generator")
 # File uploader
 uploaded_file = st.file_uploader("Upload a PDF or DOCX file", type=["pdf", "docx"])
 
+text_content = ""
+if uploaded_file is not None:
+    # Extract text based on file type
+    if uploaded_file.type == "application/pdf":
+        text_content = extract_text_from_pdf(uploaded_file)
+    elif uploaded_file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+        text_content = extract_text_from_docx(uploaded_file)
+    else:
+        st.error("Unsupported file type. Please upload a PDF or DOCX file.")
+    
+    st.success("Text extracted successfully. You can now edit it in the text area below.")
+
+user_input = st.text_area("Füge deinen Text ein oder bearbeite den extrahierten Text:", value=text_content)
+
+# Add a text area for learning goals
+learning_goals = st.text_area("Lernziele (Falls besondere Aspekte des Text mit den Fragen geprüft werden müssen):")
+
+# Create checkboxes for each message type
+selected_types = []
+st.subheader("Wähle die Art von Fragen zu generieren:")
+for msg_type in MESSAGE_TYPES:
+    if st.checkbox(msg_type.replace("_", " ").title()):
+        selected_types.append(msg_type)
+
+if st.button("Generiere Fragen"):
+
+
+# File uploader
+uploaded_file = st.file_uploader("Upload a PDF or DOCX file", type=["pdf", "docx"])
+
 if uploaded_file is not None:
     # Extract text based on file type
     if uploaded_file.type == "application/pdf":
