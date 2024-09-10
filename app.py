@@ -3,6 +3,9 @@ from openai import OpenAI
 import os
 import json
 import random
+import PyPDF2
+import docx
+import io
 
 # Access API key from Streamlit secrets
 OPENAI_API_KEY = st.secrets["openai"]["api_key"]
@@ -47,9 +50,6 @@ def convert_json_to_text_format(json_input):
     ic_output = []
 
     for item in data:
-        page_number = item.get('page_number', 'N/A')
-        subject = item.get('subject', 'N/A')
-        bloom_level = item.get('bloom_level', 'N/A')
         text = item.get('text', '')
         blanks = item.get('blanks', [])
         wrong_substitutes = item.get('wrong_substitutes', [])
@@ -107,9 +107,41 @@ def transform_output(json_string):
     except Exception as e:
         return f"Error processing input: {e}\n\nOriginal input:\n{json_string}"
 
+def extract_text_from_pdf(file):
+    pdf_reader = PyPDF2.PdfReader(file)
+    text = ""
+    for page in pdf_reader.pages:
+        text += page.extract_text()
+    return text
+
+def extract_text_from_docx(file):
+    doc = docx.Document(file)
+    text = ""
+    for paragraph in doc.paragraphs:
+        text += paragraph.text + "\n"
+    return text
+
 st.title("OLAT Fragen Generator")
 
-user_input = st.text_area("Enter your text:")
+# File uploader
+uploaded_file = st.file_uploader("Upload a PDF or DOCX file", type=["pdf", "docx"])
+
+if uploaded_file is not None:
+    # Extract text based on file type
+    if uploaded_file.type == "application/pdf":
+        text_content = extract_text_from_pdf(uploaded_file)
+    elif uploaded_file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+        text_content = extract_text_from_docx(uploaded_file)
+    else:
+        st.error("Unsupported file type. Please upload a PDF or DOCX file.")
+        text_content = ""
+
+    st.subheader("Extracted Text:")
+    st.text(text_content)
+else:
+    text_content = ""
+
+user_input = st.text_area("Enter your text or edit the extracted content:", value=text_content)
 
 # Add a text area for learning goals
 learning_goals = st.text_area("Enter learning goals (Lernziele):")
@@ -151,6 +183,6 @@ if st.button("Generate Response"):
                 mime="text/plain"
             )
     elif not user_input:
-        st.warning("Please enter some text.")
+        st.warning("Please enter some text or upload a file.")
     elif not selected_types:
         st.warning("Please select at least one message type.")
