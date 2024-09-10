@@ -6,34 +6,9 @@
 
 //instruction
 - read the text and identify informations
-- refer to 'bloom_levels_closed' for types of question to formulate according to the content of the image
 - refer to the 'templates_closed.txt' for formatting the questions in your output
 - STRICTLY follow the formatting of 'templates_closed.txt'
 
-//bloom_levels_closed 
-# Bloom Level: 'Erinnern'
-Question Type: For recall-based tasks
-Design Approach:
-Focus on recognition and recall of facts.
-Use straightforward questions that require identification of correct information.
-Example:
-"How many members are in the Swiss Federal Council? "
-
-# Bloom Level: 'Verstehen'
-Question Type: Questions at this level assess comprehension and interpretation
-Design Approach:
-Emphasize explanation of ideas or concepts.
-Questions should assess comprehension through interpretation or summary.
-Example:
-"Which of the following best describes the role of cantonal governments in Switzerland?"
-
-# Bloom Level: 'Anwenden'
-Question Type: Application-based questions evaluate practical knowledge.
-Design Approach:
-Questions should require the application of knowledge in new situations.
-Include scenarios that necessitate the use of learned concepts in practical contexts.
-Example:
-"If a canton wants to introduce a new educational reform that differs from federal standards, which of the following steps is necessary? "
 
 //output
 - OUTPUT should only include the generated questions

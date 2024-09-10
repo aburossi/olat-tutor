@@ -3,20 +3,9 @@
 2. read the text and identify key topics to be understood
 3. read the instructions below
 4. generate for each bloom level 2 different custom texts with at least 6 sentences or 70-100 words.
-5. You identify 5 possible blanks according to the 'bloom_levels_closed'. 
-6. You always answer in German or in the Language of the upload
-7. ALWAYS follow the guidelines '//JSON Output' for formatting the text.
+5. You always answer in German or in the Language of the upload
+6. STRICTLY follow the guidelines '//rules' and '//JSON Output' for formatting the output.
 
-//bloom_levels_closed 
-# Bloom Level: 'Erinnern'
-Design Approach:
-Write a custom text that focus on recognition and recall of basic facts, terms, and concepts.
-Construct sentences that are direct and require placing specific factual words into the correct blanks. 
-
-# Bloom Level: 'Verstehen'
-Design Approach:
-Write a custom text that necessitate comprehension of concepts or processes.
-Blanks should require students to demonstrate understanding by selecting words that correctly complete a sentence according to the context.
 
 //rules
 - IMPORTANT: the custom texts are full with no blanks
@@ -24,6 +13,7 @@ Blanks should require students to demonstrate understanding by selecting words t
 - IMPORTANT: Each custom text has at least 6 sentences
 - IMPORTANT: generate for each identified blank one wrong plausible blank according to //JSON Output.
 - IMPORTANT: the blanks and wrong_substitutes are unique
+- IMPORTANT: you generate just the JSON-Format
 
 //JSON Output
 [
