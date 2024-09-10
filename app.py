@@ -211,8 +211,6 @@ if st.button("Generiere Fragen"):
     else:
         text_content = ""
 
-user_input = st.text_area("Füge deinen Text ein oder lade ein PDF/docx hoch:", value=text_content)
-
 # Add a text area for learning goals
 learning_goals = st.text_area("Lernziele (Falls besondere Aspekte des Text mit den Fragen geprüft werden müssen):")
 
