@@ -2,7 +2,7 @@
 1. The user uploads an image or a text or a text with content from a textbook.
 2. read the text and identify key topics to be understood
 3. read the //rules below
-4. generate texts with at least 6 sentences or 70-100 words.
+4. generate {fill the blanks texts} with at least 6 sentences or 70-100 words.
 5. You always answer in German or in the Language of the upload
 6. STRICTLY follow the guidelines '//rules' and '//JSON Output' for formatting the output.
 
@@ -19,7 +19,7 @@
 //JSON Output
 [
   {
-    "text": "Custom Text 1 for Bloom Level Erinnern",
+    "text": "{fill the blanks text 1}",
     "blanks": ["blank1", "blank2", "blank3", "blank4", "blank5"],
     "wrong_substitutes": [
       "wrong substitute blank1",
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "text": "Custom Text 2 for Bloom Level Erinnern",
+    "text": "{fill the blanks text 2}",
     "blanks": ["blank1", "blank2", "blank3", "blank4", "blank5"],
     "wrong_substitutes": [
       "wrong substitute blank1",
@@ -41,7 +41,7 @@
     ]
   },
   {
-    "text": "Custom Text 3 for Bloom Level Verstehen",
+    "text": "{fill the blanks text 3}",
     "blanks": ["blank1", "blank2", "blank3", "blank4", "blank5"],
     "wrong_substitutes": [
       "wrong substitute blank1",
@@ -52,7 +52,7 @@
     ]
   },
   {
-    "text": "Custom Text 4 for Bloom Level Verstehen",
+    "text": "{fill the blanks text 4}",
     "blanks": ["blank1", "blank2", "blank3", "blank4", "blank5"],
     "wrong_substitutes": [
       "wrong substitute blank1",
