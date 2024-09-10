@@ -29,9 +29,12 @@ def get_chatgpt_response(prompt):
     )
     return response.choices[0].message.content
 
-st.title("ChatGPT Prompt Generator")
+st.title("OLAT Fragen Generator")
 
 user_input = st.text_area("Enter your text:")
+
+# Add a text area for learning goals
+learning_goals = st.text_area("Enter learning goals (Lernziele):")
 
 # Create checkboxes for each message type
 selected_types = []
@@ -45,7 +48,7 @@ if st.button("Generate Response"):
         all_responses = ""
         for msg_type in selected_types:
             prompt_template = read_prompt_from_md(msg_type)
-            full_prompt = f"{prompt_template}\n\nUser Input: {user_input}"
+            full_prompt = f"{prompt_template}\n\nUser Input: {user_input}\n\nLearning Goals: {learning_goals}"
             
             try:
                 response = get_chatgpt_response(full_prompt)
@@ -53,7 +56,7 @@ if st.button("Generate Response"):
                 st.subheader(f"Generated Response for {msg_type.replace('_', ' ').title()}:")
                 st.write(response)
                 
-                all_responses += f"Response for {msg_type.replace('_', ' ').title()}:\n\n{response}\n\n{'='*50}\n\n"
+                all_responses += f"{response}\n\n"
             except Exception as e:
                 st.error(f"An error occurred for {msg_type}: {str(e)}")
         
