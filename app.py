@@ -37,13 +37,29 @@ def get_chatgpt_response(prompt):
     return response.choices[0].message.content
 
 def clean_json_string(s):
+    # Remove any leading/trailing whitespace
     s = s.strip()
+    
+    # Remove any markdown code block indicators
     s = re.sub(r'^```json\s*', '', s)
     s = re.sub(r'\s*```$', '', s)
+    
+    # Replace newlines and multiple spaces in the text with a single space
+    s = re.sub(r'\s+', ' ', s)
+    
+    # Escape newlines within the text fields
+    s = re.sub(r'(?<=text": ")(.+?)(?=")', lambda m: m.group(1).replace('\n', '\\n'), s)
+    
+    # Remove any control characters
+    s = ''.join(char for char in s if ord(char) >= 32 or char == '\n')
+    
+    # Attempt to find JSON-like content within the string
     match = re.search(r'\[.*\]', s, re.DOTALL)
     if match:
         return match.group(0)
+    
     return s
+
 
 def convert_json_to_text_format(json_input):
     if isinstance(json_input, str):
@@ -115,7 +131,10 @@ def transform_output(json_string):
         
         # Attempt to salvage partial JSON
         try:
-            partial_json = json.loads(cleaned_json_string + ']')
+            # Add missing closing bracket if necessary
+            if not cleaned_json_string.strip().endswith(']'):
+                cleaned_json_string += ']'
+            partial_json = json.loads(cleaned_json_string)
             st.warning("Attempted to salvage partial JSON. Results may be incomplete.")
             fib_output, ic_output = convert_json_to_text_format(partial_json)
             return f"{ic_output}\n---\n{fib_output}"
