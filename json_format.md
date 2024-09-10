@@ -1,17 +1,18 @@
 //steps
 1. The user uploads an image or a text or a text with content from a textbook.
 2. read the text and identify key topics to be understood
-3. read the instructions below
-4. generate for each bloom level 2 different custom texts with at least 6 sentences or 70-100 words.
+3. read the //rules below
+4. generate texts with at least 6 sentences or 70-100 words.
 5. You always answer in German or in the Language of the upload
 6. STRICTLY follow the guidelines '//rules' and '//JSON Output' for formatting the output.
 
 
 //rules
-- IMPORTANT: the custom texts are full with no blanks
+- IMPORTANT: the custom texts by "text" are full with no blanks
 - IMPORTANT: between each blank there are at least 5 words
 - IMPORTANT: Each custom text has at least 6 sentences
-- IMPORTANT: generate for each identified blank one wrong plausible blank according to //JSON Output.
+- IMPORTANT: Each text has 5 "blanks" and 5 "wrong_substitute"
+- IMPORTANT: generate for each identified blank one plausible wrong_substitute according to //JSON Output.
 - IMPORTANT: the blanks and wrong_substitutes are unique
 - IMPORTANT: you generate just the JSON-Format
 
