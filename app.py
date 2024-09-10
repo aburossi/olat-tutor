@@ -56,17 +56,10 @@ def convert_json_to_text_format(json_input):
 
         num_blanks = len(blanks)
 
-        common_header = [
-            f"Keywords\tSeite {page_number}",
-            "Coverage\tLehrmittel Aspekte der Allgemeinbildung",
-            f"Subject\t/Allgemeinbildung/{subject}",
-            f"Level\t{bloom_level}"
-        ]
 
         # Fill-in-the-Blanks format
         fib_lines = [
             "Type\tFIB",
-            *common_header,
             "Title\t✏✏Vervollständigen Sie die Lücken mit dem korrekten Begriff.✏✏",
             f"Points\t{num_blanks}"
         ]
