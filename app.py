@@ -21,7 +21,7 @@ def read_prompt_from_md(filename):
 
 def get_chatgpt_response(prompt):
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt}

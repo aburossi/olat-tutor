@@ -77,7 +77,7 @@ Points	3
 -1	Südafrika
 3	Schweiz'
 
-'Typ	MC
+Typ	MC
 Title	Fussball: WM-Titeln
 Question	Welche Ländern haben mindestens eine WM gewonnen?
 Max answers	4
@@ -86,9 +86,9 @@ Points	3
 1.5	Deutschland
 1.5	Brasilien
 -1	Südafrika
--1	Schweiz'
+-1	Schweiz
 
-'Typ	MC
+Typ	MC
 Title	Fussball: Austragungsort
 Question	In welchen Ländern wurde zwischen dem Jahr 2000 und 2015 eine Fussball Weltmeisterschaft ausgetragen?
 Max answers	4
@@ -97,7 +97,7 @@ Points	3
 1	Deutschland
 1	Brasilien
 1	Südafrika
--1	Schweiz'
+-1	Schweiz
 
 'Typ	MC
 Title	Fussball: WM-Titeln
@@ -108,4 +108,4 @@ Points	3
 0.75	Deutschland
 0.75	Brasilien
 0.75	Italien
-0.75	Argentinien'
+0.75	Argentinien

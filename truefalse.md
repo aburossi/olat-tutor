@@ -50,20 +50,20 @@ Example:
 Typ\tTruefalse\nTitle\tgeneral_title_of_the_question\nQuestion\tgeneral_question_text_placeholder\nPoints\tSum_of_correct_answer\n\tUnanswered\tRight\tWrong\tcorrect_answer_placeholder_1\t0\t1\t-0.5\tcorrect_answer_placeholder_1\t0\t1\t-0.5\tincorrect_answer_placeholder_1\t0\t-0.5\t1
 
 OUTPUT Example:
-'Typ	Truefalse		
+Typ	Truefalse		
 Title	Hauptstädte Europa		
 Question	Sind die folgenden Aussagen richtig oder falsch?		
 Points	3		
 	Unanswered	Right	Wrong
 Paris ist in Frankreich	0	1	-0.5
 Bern ist in Schweiz	0	1	-0.5
-Stockholm ist in Danemark	0	-0.5	1'
+Stockholm ist in Danemark	0	-0.5	1
 
-'Typ    Truefalse
+Typ    Truefalse
 Title    Kontinente
 Question    Sind die folgenden Aussagen richtig oder falsch?
 Points    3
     Unanswered    Right    Wrong
 Hongkong ist in Europa    0    -0.5    1
 Buenos Aires ist in Afrika    0    -0.5    1
-Berlin ist in Asien    0    -0.5    1'
+Berlin ist in Asien    0    -0.5    1
