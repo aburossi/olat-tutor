@@ -36,11 +36,11 @@ Example:
 "If a canton wants to introduce a new educational reform that differs from federal standards, which of the following steps is necessary? "
 
 //output
-- OUTPUT should only include the generated questions
+- OUTPUT should only include the 3 generated questions
 - ALWAYS generate 3 questions
 - READ the //rules to understand the rules for points and answers.
 - STRICTLY follow the formatting of the 'templates_closed.txt'.
-- IMPORTANT: the output is just the questions
+- IMPORTANT: the output is just the 3 questions
 - No additional explanation. ONLY the questions as plain text. never use ':' as a separator.
 
 //rules

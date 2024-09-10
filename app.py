@@ -78,7 +78,6 @@ def convert_json_to_text_format(json_input):
         # Inline Choice format
         ic_lines = [
             "Type\tInlinechoice",
-            *common_header,
             "Title\tWörter einordnen",
             "Question\t✏✏Wählen Sie die richtigen Wörter.✏✏",
             f"Points\t{num_blanks}"
