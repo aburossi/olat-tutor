@@ -194,22 +194,22 @@ if st.button("Generiere Fragen"):
 
 
 # File uploader
-uploaded_file = st.file_uploader("Upload a PDF or DOCX file", type=["pdf", "docx"])
+    uploaded_file = st.file_uploader("Upload a PDF or DOCX file", type=["pdf", "docx"])
 
-if uploaded_file is not None:
-    # Extract text based on file type
-    if uploaded_file.type == "application/pdf":
-        text_content = extract_text_from_pdf(uploaded_file)
-    elif uploaded_file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-        text_content = extract_text_from_docx(uploaded_file)
+    if uploaded_file is not None:
+        # Extract text based on file type
+        if uploaded_file.type == "application/pdf":
+            text_content = extract_text_from_pdf(uploaded_file)
+        elif uploaded_file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+            text_content = extract_text_from_docx(uploaded_file)
+        else:
+            st.error("Unsupported file type. Please upload a PDF or DOCX file.")
+            text_content = ""
+
+        st.subheader("Extracted Text:")
+        st.text(text_content)
     else:
-        st.error("Unsupported file type. Please upload a PDF or DOCX file.")
         text_content = ""
-
-    st.subheader("Extracted Text:")
-    st.text(text_content)
-else:
-    text_content = ""
 
 user_input = st.text_area("Füge deinen Text ein oder lade ein PDF/docx hoch:", value=text_content)
 
