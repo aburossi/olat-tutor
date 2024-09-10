@@ -6,6 +6,7 @@ import random
 import PyPDF2
 import docx
 import io
+import re
 
 # Access API key from Streamlit secrets
 OPENAI_API_KEY = st.secrets["openai"]["api_key"]
@@ -18,7 +19,7 @@ MESSAGE_TYPES = [
     "kprim",
     "truefalse",
     "draganddrop",
-    "json_format"  # New message type
+    "json_format"
 ]
 
 def read_prompt_from_md(filename):
@@ -36,48 +37,13 @@ def get_chatgpt_response(prompt):
     return response.choices[0].message.content
 
 def clean_json_string(s):
-    # Remove any leading/trailing whitespace
     s = s.strip()
-    
-    # Remove any markdown code block indicators
     s = re.sub(r'^```json\s*', '', s)
     s = re.sub(r'\s*```$', '', s)
-    
-    # Attempt to find JSON-like content within the string
     match = re.search(r'\[.*\]', s, re.DOTALL)
     if match:
         return match.group(0)
-    
     return s
-
-def transform_output(json_string):
-    try:
-        cleaned_json_string = clean_json_string(json_string)
-        json_data = json.loads(cleaned_json_string)
-        fib_output, ic_output = convert_json_to_text_format(json_data)
-        return f"{ic_output}\n---\n{fib_output}"
-    except json.JSONDecodeError as e:
-        st.error(f"Error parsing JSON: {e}")
-        st.text("Cleaned input:")
-        st.code(cleaned_json_string, language='json')
-        st.text("Original input:")
-        st.code(json_string)
-        
-        # Attempt to salvage partial JSON
-        try:
-            partial_json = json.loads(cleaned_json_string + ']')
-            st.warning("Attempted to salvage partial JSON. Results may be incomplete.")
-            fib_output, ic_output = convert_json_to_text_format(partial_json)
-            return f"{ic_output}\n---\n{fib_output}"
-        except:
-            st.error("Unable to salvage partial JSON.")
-            return "Error: Invalid JSON format"
-    except Exception as e:
-        st.error(f"Error processing input: {e}")
-        st.text("Original input:")
-        st.code(json_string)
-        return "Error: Unable to process input"
-
 
 def convert_json_to_text_format(json_input):
     if isinstance(json_input, str):
@@ -95,7 +61,6 @@ def convert_json_to_text_format(json_input):
 
         num_blanks = len(blanks)
 
-
         # Fill-in-the-Blanks format
         fib_lines = [
             "Type\tFIB",
@@ -104,7 +69,7 @@ def convert_json_to_text_format(json_input):
         ]
 
         for blank in blanks:
-            text = text.replace(blank, f"{{blank}}", 1)
+            text = text.replace(blank, "{blank}", 1)
 
         parts = text.split("{blank}")
         for index, part in enumerate(parts):
@@ -142,9 +107,26 @@ def transform_output(json_string):
         fib_output, ic_output = convert_json_to_text_format(json_data)
         return f"{ic_output}\n---\n{fib_output}"
     except json.JSONDecodeError as e:
-        return f"Error parsing JSON: {e}\n\nCleaned input:\n{cleaned_json_string}\n\nOriginal input:\n{json_string}"
+        st.error(f"Error parsing JSON: {e}")
+        st.text("Cleaned input:")
+        st.code(cleaned_json_string, language='json')
+        st.text("Original input:")
+        st.code(json_string)
+        
+        # Attempt to salvage partial JSON
+        try:
+            partial_json = json.loads(cleaned_json_string + ']')
+            st.warning("Attempted to salvage partial JSON. Results may be incomplete.")
+            fib_output, ic_output = convert_json_to_text_format(partial_json)
+            return f"{ic_output}\n---\n{fib_output}"
+        except:
+            st.error("Unable to salvage partial JSON.")
+            return "Error: Invalid JSON format"
     except Exception as e:
-        return f"Error processing input: {e}\n\nOriginal input:\n{json_string}"
+        st.error(f"Error processing input: {str(e)}")
+        st.text("Original input:")
+        st.code(json_string)
+        return "Error: Unable to process input"
 
 def extract_text_from_pdf(file):
     pdf_reader = PyPDF2.PdfReader(file)
