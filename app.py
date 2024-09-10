@@ -19,7 +19,7 @@ MESSAGE_TYPES = [
     "kprim",
     "truefalse",
     "draganddrop",
-    "json_format"
+    "inline_fib"
 ]
 
 def read_prompt_from_md(filename):
@@ -203,7 +203,7 @@ if st.button("Generiere Fragen"):
             try:
                 response = get_chatgpt_response(full_prompt)
                 
-                if msg_type == "json_format":
+                if msg_type == "inline_fib":
                     processed_response = transform_output(response)
                     st.subheader(f"Generated and Processed Response for JSON Format:")
                     st.text(processed_response)
