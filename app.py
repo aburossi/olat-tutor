@@ -154,7 +154,7 @@ def main():
         else:
             st.error("Unsupported file type. Please upload a PDF or DOCX file.")
         
-        st.success("Text extracted successfully. You can now edit it in the text area below.")
+        st.success("Text erfolgreich extrahiert. Sie können ihn jetzt im Textbereich unten bearbeiten.")
 
     user_input = st.text_area("Füge deinen Text ein oder bearbeite den extrahierten Text:", value=text_content)
     learning_goals = st.text_area("Lernziele (Falls besondere Aspekte des Text mit den Fragen geprüft werden müssen):")
