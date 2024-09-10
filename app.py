@@ -181,19 +181,19 @@ if uploaded_file is not None:
 else:
     text_content = ""
 
-user_input = st.text_area("Enter your text or edit the extracted content:", value=text_content)
+user_input = st.text_area("Füge deinen Text ein oder lade ein PDF/docx hoch:", value=text_content)
 
 # Add a text area for learning goals
-learning_goals = st.text_area("Enter learning goals (Lernziele):")
+learning_goals = st.text_area("Lernziele (Falls besondere Aspekte des Text mit den Fragen geprüft werden müssen):")
 
 # Create checkboxes for each message type
 selected_types = []
-st.subheader("Select message types:")
+st.subheader("Wähle die Art von Fragen zu generieren:")
 for msg_type in MESSAGE_TYPES:
     if st.checkbox(msg_type.replace("_", " ").title()):
         selected_types.append(msg_type)
 
-if st.button("Generate Response"):
+if st.button("Generiere Fragen"):
     if user_input and selected_types:
         all_responses = ""
         for msg_type in selected_types:
